@@ -1,0 +1,101 @@
+﻿<Window x:Class="BillCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BillCalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <StackPanel Margin="10, 10, 10, 10">
+                <Label Content="Beverage"/>
+                <ComboBox x:Name="beverageComboBox" DisplayMemberPath="Name" SelectionChanged="beverageComboBox_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="10, 10, 10, 10">
+                <Label Content="Appetizer"/>
+                <ComboBox x:Name="appetizerComboBox" DisplayMemberPath="Name" SelectionChanged="appetizerComboBox_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="10, 10, 10, 10">
+                <Label Content="Main Course"/>
+                <ComboBox x:Name="mainCourseComboBox" DisplayMemberPath="Name" SelectionChanged="mainCourseComboBox_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="10, 10, 10, 10">
+                <Label Content="Dessert"/>
+                <ComboBox x:Name="dessertComboBox" DisplayMemberPath="Name" SelectionChanged="dessertComboBox_SelectionChanged"/>
+            </StackPanel>
+            <Label x:Name="infoDisplay"
+               Content=""
+               Margin="20,10,10,10"
+               VerticalAlignment="Center" />
+            <Button Content="Clear Bill" Click="ClearBillButton_Click" Margin="20, 20, 20, 20"/>
+        </StackPanel>
+
+        <DataGrid x:Name="orderDataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  EnableRowVirtualization="True"
+                  ItemsSource="{Binding}"
+                  Margin="10,10,10,10"
+                  RowDetailsVisibilityMode="VisibleWhenSelected"
+                  ColumnWidth="*"
+                  SelectionMode="Single"
+                  SelectedItem="{
+                        Binding SelectedItem, 
+                        Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="productNameColumn"
+                                    Binding="{Binding Path=Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn x:Name="productCategoryColumn"
+                                    Binding="{Binding Path=Category}"
+                                    Header="Category"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn x:Name="productPriceColumn"
+                                    Binding="{Binding Path=Price}"
+                                    Header="Price"
+                                    IsReadOnly="True" />
+                <DataGridTemplateColumn x:Name="Quantity"
+                                        Width="SizeToHeader"
+                                        Header="Quantity">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox 
+                                Text="{Binding Path=Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Margin="1" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Subtotal:" Margin="10"/>
+                    <TextBlock x:Name="subtotalTextBlock" Text="{Binding subtotal, StringFormat='{}{0:C}'}" Margin="20, 10, 20, 10"/>
+                    <TextBlock Text="Tax:" Margin="10"/>
+                    <TextBlock x:Name="taxTextBlock" Text="{Binding tax, StringFormat='{}{0:C}'}" Margin="20, 10, 20, 10"/>
+                    <TextBlock Text="Total:" Margin="10"/>
+                    <TextBlock x:Name="totalTextBlock" Text="{Binding total, StringFormat='{}{0:C}'}" Margin="20, 10, 20, 10"/>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Student: Wenjie Zhou" Margin="30, 10, 30, 10"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Button Click="LogoButton_Click" Margin="10, 10, 10, 10">
+                    <Image Source="/BillCalculator;component/logo.png" Width="130" Height="45" />
+                </Button>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
