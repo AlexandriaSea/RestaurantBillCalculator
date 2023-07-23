@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillCalculator", "BillCalculator\BillCalculator.csproj", "{D756409D-B71F-43E0-B901-DE40737FC948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillCalculator", "BillCalculator\BillCalculator.csproj", "{D756409D-B71F-43E0-B901-DE40737FC948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginUserControl", "LoginUserControl\LoginUserControl.csproj", "{E8362F65-E7F4-4CBC-BE95-07E4A553BAF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D756409D-B71F-43E0-B901-DE40737FC948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D756409D-B71F-43E0-B901-DE40737FC948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D756409D-B71F-43E0-B901-DE40737FC948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8362F65-E7F4-4CBC-BE95-07E4A553BAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8362F65-E7F4-4CBC-BE95-07E4A553BAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8362F65-E7F4-4CBC-BE95-07E4A553BAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8362F65-E7F4-4CBC-BE95-07E4A553BAF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
